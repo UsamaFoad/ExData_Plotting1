@@ -40,12 +40,16 @@ rownames(data_set) = 1:nrow(data_set)
 # Open png device for output
 png(filename = "plot4.png", width = 480, height = 480, 
     units = "px", bg = "transparent")
-# Create the histogram, plot the Sub_metering_1 first then add 2 & 3 as points
+# Set graphical parameters, 2 X 2 
 par(mfrow = c(2, 2))
+# Create the histograms, 1st one Top left
 plot(data_set$Timestamp, data_set$Global_active_power, type = "l", 
      xlab = "", ylab = "Global Active Power")
+# Create the histograms, 2nd one Top right
 plot(data_set$Timestamp, data_set$Voltage, type = "l", 
      xlab = "datetime", ylab = "Voltage")
+# Create the histograms, 3rd one bottom left plot the Sub_metering_1 first 
+# then add 2 & 3 as points and finally add the legend
 plot(data_set$Timestamp, data_set$Sub_metering_1, type = "l", 
      xlab = "", ylab = "Energy sub metering")
 points(data_set$Timestamp, data_set$Sub_metering_2, type = "l", 
@@ -54,6 +58,7 @@ points(data_set$Timestamp, data_set$Sub_metering_3, type = "l",
         xlab = "", ylab = "Energy sub metering", col = "blue")
 legend("topright", lwd = 1, bty = "n", col = c("black", "red", "blue"),
     legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+# Create the histograms, 4th one bottom right
 plot(data_set$Timestamp, data_set$Global_reactive_power, type = "l",
      xlab = "datetime", ylab = "Global_reactive_power")
 # Close the device
